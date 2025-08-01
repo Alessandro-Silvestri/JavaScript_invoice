@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.addItem{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(76, 230, 230);
+}
