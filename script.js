@@ -1,3 +1,7 @@
+// objects
+let divItemsContainer = document.getElementById("divItemsContainer");
+let totalDisplay = document.getElementById("totalDisplay");
+
 function itemMakerRow() {
     let amount = 0;
     // Item table creation ///////////////////////////////////////
@@ -54,39 +58,34 @@ function itemMakerRow() {
     // remove behavior
     inputRemoveButton.addEventListener("click", () => {
         // remove the item row (it's not possible to remove all the rows)
-        if (divItemsContainer.children.length > 1)
+        if (divItemsContainer.children.length > 1) {
             inputRemoveButton.parentNode.parentNode.parentNode.remove();
+            totalAndDisplay();
+        }
     })
 
-
-
-
-
-    
-
-    /////////UNTIL HERE ///////////// AMOUNT CALCULATION //////////// BUG FIX /////////
+    // row amount calculation
     table.addEventListener("focusout", () => {
-        amount = inputQuantity.value * inputRate.value;
+        amount = Number(inputQuantity.value) * Number(inputRate.value);
         var displayAmountNode = document.createTextNode(`£ ${amount}`);
-        table.children[0].children[3].innerHTML = displayAmountNode.value;
+        // show the amount calculation on the amount field
+        table.children[0].children[3].innerHTML = displayAmountNode.nodeValue;
+        totalAndDisplay();
     })
-    ///////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
     return table;
 }
 
-// objects
-let divItemsContainer = document.getElementById("divItemsContainer");
-let totalCalculationButton = document.getElementById("totalCalculationButton");
-let totalDisplay = document.getElementById("totalDisplay");
+function totalAndDisplay() {
+    let total = 0;
+    for (let i = 0; i < divItemsContainer.children.length; i++) {
+        // the amount row without "£ "
+        total += Number(divItemsContainer.children[i].children[0].children[3].innerHTML.slice(2));
+    }
+    totalDisplay.innerHTML = total;
+}
 
 divItemsContainer.appendChild(itemMakerRow());
-
 let addItem = document.getElementById("addItem");
 addItem.addEventListener("click", () => {
     divItemsContainer.appendChild(itemMakerRow());
