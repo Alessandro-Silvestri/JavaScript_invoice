@@ -1,6 +1,11 @@
-// objects
+// objects and events
 let divItemsContainer = document.getElementById("divItemsContainer");
 let totalDisplay = document.getElementById("totalDisplay");
+let addItem = document.getElementById("addItem");
+divItemsContainer.appendChild(itemMakerRow());
+addItem.addEventListener("click", () => {
+    divItemsContainer.appendChild(itemMakerRow());
+})
 
 function itemMakerRow() {
     let amount = 0;
@@ -84,12 +89,4 @@ function totalAndDisplay() {
     }
     totalDisplay.innerHTML = total;
 }
-
-divItemsContainer.appendChild(itemMakerRow());
-let addItem = document.getElementById("addItem");
-addItem.addEventListener("click", () => {
-    divItemsContainer.appendChild(itemMakerRow());
-})
-
-
 
