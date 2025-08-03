@@ -18,7 +18,6 @@ function itemMakerRow() {
     // input Description
     let inputDescription = document.createElement("input");
     inputDescription.type = "text";
-    inputDescription.id = "inputDescription";
     inputDescription.placeholder = "Description";
     inputDescription.size = "40";
     var td = document.createElement("td");
@@ -28,7 +27,6 @@ function itemMakerRow() {
     // input quantity
     let inputQuantity = document.createElement("input");
     inputQuantity.type = "text";
-    inputQuantity.id = "inputQuantity";
     inputQuantity.size = "2";
     inputQuantity.placeholder = "Qt"
     var td = document.createElement("td");
@@ -38,7 +36,6 @@ function itemMakerRow() {
     // input rate
     let inputRate = document.createElement("input");
     inputRate.type = "text";
-    inputRate.id = "inputRate";
     inputRate.size = "2";
     inputRate.placeholder = "£";
     var td = document.createElement("td");
@@ -53,7 +50,6 @@ function itemMakerRow() {
 
     // button remove
     let inputRemoveButton = document.createElement("button");
-    inputRemoveButton.id = "inputRemoveButton";
     inputRemoveButtonNode = document.createTextNode("X");
     inputRemoveButton.appendChild(inputRemoveButtonNode);
     var td = document.createElement("td");
