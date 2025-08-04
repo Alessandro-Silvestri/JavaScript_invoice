@@ -2,12 +2,22 @@
 let divItemsContainer = document.getElementById("divItemsContainer");
 let totalDisplay = document.getElementById("totalDisplay");
 let addItem = document.getElementById("addItem");
+// adding a row in the <div> container
 divItemsContainer.appendChild(itemMakerRow());
 addItem.addEventListener("click", () => {
     divItemsContainer.appendChild(itemMakerRow());
 })
 
+
+
 function itemMakerRow() {
+    function rowAmountCalculation() {
+        // calculate the row amount and display the total
+        amount = Number(inputQuantity.value) * Number(inputRate.value);
+        var displayAmountNode = document.createTextNode(`£ ${amount}`);
+        table.children[0].children[3].innerHTML = displayAmountNode.nodeValue;
+        totalAndDisplay();
+    }
     let amount = 0;
     // Item table creation ///////////////////////////////////////
     let table = document.createElement("table");
@@ -56,7 +66,7 @@ function itemMakerRow() {
     td.appendChild(inputRemoveButton);
     tr.appendChild(td);
 
-    // remove behavior
+    // remove button
     inputRemoveButton.addEventListener("click", () => {
         // remove the item row (it's not possible to remove all the rows)
         if (divItemsContainer.children.length > 1) {
@@ -65,15 +75,8 @@ function itemMakerRow() {
         }
     })
 
-    // row amount calculation
-    table.addEventListener("focusout", () => {
-        amount = Number(inputQuantity.value) * Number(inputRate.value);
-        var displayAmountNode = document.createTextNode(`£ ${amount}`);
-        // show the amount calculation on the amount field
-        table.children[0].children[3].innerHTML = displayAmountNode.nodeValue;
-        totalAndDisplay();
-    })
-
+    inputQuantity.addEventListener("input", rowAmountCalculation)
+    inputRate.addEventListener("input", rowAmountCalculation)
     return table;
 }
 
